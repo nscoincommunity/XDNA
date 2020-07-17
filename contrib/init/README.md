@@ -1,10 +1,10 @@
 Sample configuration files for:
 
-SystemD: xdnad.service
-Upstart: xdnad.conf
-OpenRC:  xdnad.openrc
-         xdnad.openrcconf
-CentOS:  xdnad.init
+SystemD: nscoind.service
+Upstart: nscoind.conf
+OpenRC:  nscoind.openrc
+         nscoind.openrcconf
+CentOS:  nscoind.init
 
 have been made available to assist packagers in creating node packages here.
 

@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2020 The XDNA Core developers
+// Copyright (c) 2017-2020 The NSCOIN Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -54,18 +54,15 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 //    timestamp before)
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
-    boost::assign::map_list_of(0, uint256("000003b39d72ad4da1eb2ef2d044032dd95750cc25c435ecad2a236dd22b99fe"))
-                              (50, uint256("000000224104db4572f767923cafd543f36b9a4d1eee117c4dc3e1961ca6371b"))
-                              (60200, uint256("00000000000031ba24b923e1966fbe17ae0cdff1efa9d1efc556e2a3cafb5c55"))
-                              (134000, uint256("0000000000c08ddeef3b04f5ead225a8d5f4765756d32407b74da5ca9c708b80"))
-                              (165000, uint256("00000000010f679ac3889908996bed4716f33de4608eb48594fd36b65f03831b"))
-                              (680700, uint256("0000000007151c76d2da2416f700269ef7f030a3ad8d0f788cb7107887df40fe"))
-                              (840000, uint256("f29504553a9a8a1c6d66602810e62501e7eb7a79891fe29709a99567c6e9033e"));
+    boost::assign::map_list_of
+    (0, uint256("00000a6cd288d441ae62c28fdbecf87fab6c789f50f3a5774513dfbe9a5d9090"))
+	(25850, uint256("c8586802afd1fe027b9013721bcc204995e66f02351b0cf43636a9ea7c9525ac"))
+	(60083, uint256("580dc42f882e6d1f0256c1518a2d8efbb47726511c03b9dc9224a76c6c436568"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1581651020, // * UNIX timestamp of last checkpoint block
-    1310912,      // * total number of transactions between genesis and last checkpoint
+    1593644700, // * UNIX timestamp of last checkpoint block
+    56979,      // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -148,13 +145,13 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x90;
-        pchMessageStart[1] = 0xc3;
-        pchMessageStart[2] = 0xfe;
-        pchMessageStart[3] = 0xe8;
-        vAlertPubKey = ParseHex("04A2B684CBABE97BA08A35EA388B06A6B03E13DFBA974466880AF4CAE1C5B606A751BF7C5CBDE5AB90722CF5B1EC1AADA6D24D607870B6D6B5D684082655404C8D");
-        vXDNADevKey = ParseHex("022168bed33339fdc945077c9056a42ceacda589b9d2c7733a72e75e7ee29ef586"); // DevPubKey for fees
-        vXDNAFundKey = ParseHex("03b7a94485bb264d12fbffdddff462060e51a27e55f256b62648c25c1fb8bb565c"); // FundPubKey for fees
+        pchMessageStart[0] = 0x17;
+        pchMessageStart[1] = 0x7b;
+        pchMessageStart[2] = 0x54;
+        pchMessageStart[3] = 0xb8;
+        vAlertPubKey = ParseHex("044a002030da79684a5544c2254eb6c896fae95a9ea7b51d889475eb57ab2051f1a5858cac61ae400e90ea080152");
+        vNSCOINDevKey = ParseHex("022168bed33339fdc945077c9056a42ceacda589b9d2c7733a72e75e7ee29ef586"); // DevPubKey for fees
+        vNSCOINFundKey = ParseHex("03b7a94485bb264d12fbffdddff462060e51a27e55f256b62648c25c1fb8bb565c"); // FundPubKey for fees
         nDevFee = 1; // DevFee %
         nFundFee = 2; //FundFee %
         nDefaultPort = 1945;
@@ -230,16 +227,16 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetSpacing = 1 * 60;  // XDNA: 1 minute
+        nTargetSpacing = 1 * 60;  // NSCOIN: 1 minute
         nAntiInstamineTime = 720; // 720 blocks with 1 reward for instamine prevention
         nMaturity = 60;
         nMasternodeCountDrift = 3;
-        nMaxMoneyOut = 367452000 * COIN;
+        nMaxMoneyOut = 10000000 * COIN;
 
-        nStartMasternodePaymentsBlock = 7001;
+        nStartMasternodePaymentsBlock = 500;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 682500;
+        nLastPOWBlock = 5000;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
         nStartMasternodePayments = 1403728576; //Wed, 25 Jun 2014 20:36:16 GMT
         nHEXHashTimestamp = 1533567600; // 6  August  2018, 15:00:00 GMT+00:00
@@ -256,30 +253,34 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "RT.com Iran may exit nuclear deal in coming weeks – Deputy FM 22 Jun, 2018 08:49";
+        const char* pszTimestamp = "Dutch anti-Islam lawmaker cancels Prophet Muhammad cartoon contest";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("044a001040da79684a0544c2254eb6c896fae95a9ea7b51d889475eb57ab2051f1a5858cac61ae400e90ea08015263ad40c65d36f0edf19e996972e7d2cbd13c15") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("044a002030da79884a0544c2254eb6c896fae95a9ea7b51d889475eb57ab2051f1a5858cac61ae400e90ea08015263ad40c65d36f0edf19e996972e7d2cbd13c15") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1529665200;
+        genesis.nTime = 1584031457;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 24657;
+        genesis.nNonce = 188386;
 
         hashGenesisBlock = genesis.GetKeccakHash();
 
-        assert(hashGenesisBlock == uint256("000003b39d72ad4da1eb2ef2d044032dd95750cc25c435ecad2a236dd22b99fe"));
-        assert(genesis.hashMerkleRoot == uint256("89370975b13f97d8f9cfc373b0e9d5cc0e2e06b8dc283c76824e4df03ca2d60a"));
+        assert(hashGenesisBlock == uint256("00000a6cd288d441ae62c28fdbecf87fab6c789f50f3a5774513dfbe9a5d9090"));
+        assert(genesis.hashMerkleRoot == uint256("760370245fe03d98d94f840c64cc44464ff1d24cb56583970e223d3e4d7bab55"));
 
-        vSeeds.push_back(CDNSSeedData("xdna.io", "seeds.seeder01.xdna.io"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("seed1.nscoin.us", "seed1.nscoin.us"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("seed2.nscoin.us", "seed2.nscoin.us"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("seed3.nscoin.us", "seed3.nscoin.us"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("seeder.nscoin.us", "seeder.nscoin.us"));     // seeder.nscoin.us
+		vSeeds.push_back(CDNSSeedData("207.148.70.156", "207.148.70.156"));     // seeder.nscoin.us	
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 75);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 8);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 53);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 54);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
@@ -348,12 +349,12 @@ public:
         assert(subsidySwitchPoints.size());
 
         vAlertPubKey = ParseHex("04459DC949A9E2C2E1FA87ED9EE93F8D26CD52F95853EE24BCD4B07D4B7D79458E81F0425D81E52B797ED304A836667A1D2D422CD10F485B06CCBE906E1081FBAC");
-        nDefaultPort = 11945;
+        nDefaultPort = 19333;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetSpacing = 1 * 60;  // XDNA: 1 minute
+        nTargetSpacing = 1 * 60;  // NSCOIN: 1 minute
         nLastPOWBlock = std::numeric_limits<decltype(nLastPOWBlock)>::max();
         nMaturity = 15;
         nMasternodeCountDrift = 4;
@@ -371,16 +372,16 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("xdna.io", "seed01.xdna.io"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("nscoin.io", "seed1.nscoin.io"));     // Primary DNS Seeder
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 137); // Testnet XDNA addresses start with 'x'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet XDNA script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 137); // Testnet NSCOIN addresses start with 'x'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet NSCOIN script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        // Testnet XDNA BIP32 pubkeys start with 'DRKV'
+        // Testnet NSCOIN BIP32 pubkeys start with 'DRKV'
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
-        // Testnet XDNA BIP32 prvkeys start with 'DRKP'
+        // Testnet NSCOIN BIP32 prvkeys start with 'DRKP'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet XDNA BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet NSCOIN BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
@@ -444,7 +445,7 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetSpacing = 1 * 60;        // XDNA: 1 minute
+        nTargetSpacing = 1 * 60;        // NSCOIN: 1 minute
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1529668200;
         genesis.nBits = 0x207fffff;

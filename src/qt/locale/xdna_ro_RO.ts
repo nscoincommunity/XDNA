@@ -183,6 +183,6 @@
     </message>
     </context>
 <context>
-    <name>xdna-core</name>
+    <name>nscoin-core</name>
     </context>
 </TS>

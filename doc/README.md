@@ -1,28 +1,28 @@
-XDNA
+NSCOIN
 =====================
 
 Setup
 ---------------------
-[XDNA](http://xdna.io/wallet) is the original XDNA client and it builds the backbone of the network. However, it downloads and stores the entire history of XDNA transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[NSCOIN](http://nscoin.io/wallet) is the original NSCOIN client and it builds the backbone of the network. However, it downloads and stores the entire history of NSCOIN transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
-The following are some helpful notes on how to run XDNA on your native platform.
+The following are some helpful notes on how to run NSCOIN on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- bin/32/xdna-qt (GUI, 32-bit) or bin/32/xdnad (headless, 32-bit)
-- bin/64/xdna-qt (GUI, 64-bit) or bin/64/xdnad (headless, 64-bit)
+- bin/32/nscoin-qt (GUI, 32-bit) or bin/32/nscoind (headless, 32-bit)
+- bin/64/nscoin-qt (GUI, 64-bit) or bin/64/nscoind (headless, 64-bit)
 
 ### Windows
 
-Unpack the files into a directory, and then run xdna-qt.exe.
+Unpack the files into a directory, and then run nscoin-qt.exe.
 
 ### OSX
 
-Drag XDNA-Qt to your applications folder, and then run XDNA-Qt.
+Drag NSCOIN-Qt to your applications folder, and then run NSCOIN-Qt.
 
 ### Need Help?
 
@@ -31,7 +31,7 @@ Drag XDNA-Qt to your applications folder, and then run XDNA-Qt.
 
 Building
 ---------------------
-The following are developer notes on how to build XDNA on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build NSCOIN on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OSX Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -40,7 +40,7 @@ The following are developer notes on how to build XDNA on your native platform. 
 
 Development
 ---------------------
-The XDNA repo's [root README](https://github.com/XDNA-Core/XDNA/blob/master/README.md) contains relevant information on the development process and automated testing.
+The NSCOIN repo's [root README](https://github.com/NSCOIN-Core/NSCOIN/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)

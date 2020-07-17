@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2020 The XDNA Core developers
+// Copyright (c) 2017-2020 The NSCOIN Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -238,10 +238,10 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop XDNA server.");
+            "\nStop NSCOIN server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "XDNA server stopping";
+    return "NSCOIN server stopping";
 }
 
 
@@ -321,22 +321,22 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* XDNA features */
-        {"xdna", "listmasternodes", &listmasternodes, true, true, false},
-        {"xdna", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"xdna", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"xdna", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"xdna", "masternodedebug", &masternodedebug, true, true, false},
-        {"xdna", "startmasternode", &startmasternode, true, true, false},
-        {"xdna", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"xdna", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"xdna", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"xdna", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"xdna", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"xdna", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"xdna", "mnsync", &mnsync, true, true, false},
-        {"xdna", "spork", &spork, true, true, false},
-        {"xdna", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* NSCOIN features */
+        {"nscoin", "listmasternodes", &listmasternodes, true, true, false},
+        {"nscoin", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"nscoin", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"nscoin", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"nscoin", "masternodedebug", &masternodedebug, true, true, false},
+        {"nscoin", "startmasternode", &startmasternode, true, true, false},
+        {"nscoin", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"nscoin", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"nscoin", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"nscoin", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"nscoin", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"nscoin", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"nscoin", "mnsync", &mnsync, true, true, false},
+        {"nscoin", "spork", &spork, true, true, false},
+        {"nscoin", "getpoolinfo", &getpoolinfo, true, true, false},
 #ifdef ENABLE_WALLET
 
         /* Wallet */
@@ -602,16 +602,16 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-                                             _("To use xdnad, or the -server option to xdna-qt, you must set an rpcpassword in the configuration file:\n"
+                                             _("To use nscoind, or the -server option to nscoin-qt, you must set an rpcpassword in the configuration file:\n"
                                                "%s\n"
                                                "It is recommended you use the following random password:\n"
-                                               "rpcuser=xdnarpc\n"
+                                               "rpcuser=nscoinrpc\n"
                                                "rpcpassword=%s\n"
                                                "(you do not need to remember this password)\n"
                                                "The username and password MUST NOT be the same.\n"
                                                "If the file does not exist, create it with owner-readable-only file permissions.\n"
                                                "It is also recommended to set alertnotify so you are notified of problems;\n"
-                                               "for example: alertnotify=echo %%s | mail -s \"XDNA Alert\" admin@foo.com\n"),
+                                               "for example: alertnotify=echo %%s | mail -s \"NSCOIN Alert\" admin@foo.com\n"),
                                              GetConfigFile().string(),
                                              EncodeBase58(&rand_pwd[0], &rand_pwd[0] + 32)),
             "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -1062,7 +1062,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> xdna-cli " + methodname + " " + args + "\n";
+    return "> nscoin-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

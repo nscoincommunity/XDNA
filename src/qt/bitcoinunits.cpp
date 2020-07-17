@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2020 The XDNA Core developers
+// Copyright (c) 2017-2020 The NSCOIN Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,18 +20,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(XDNA);
-   // unitlist.append(mXDNA);
-   // unitlist.append(uXDNA);
+    unitlist.append(NSCOIN);
+   // unitlist.append(mNSCOIN);
+   // unitlist.append(uNSCOIN);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case XDNA:
-    case mXDNA:
-    case uXDNA:
+    case NSCOIN:
+    case mNSCOIN:
+    case uNSCOIN:
         return true;
     default:
         return false;
@@ -41,12 +41,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case XDNA:
-        return QString("xdna");
-    case mXDNA:
-        return QString("mxdna");
-    case uXDNA:
-        return QString::fromUtf8("uxdna");
+    case NSCOIN:
+        return QString("nscoin");
+    case mNSCOIN:
+        return QString("mnscoin");
+    case uNSCOIN:
+        return QString::fromUtf8("unscoin");
     default:
         return QString("???");
     }
@@ -56,23 +56,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case XDNA:
-            return QString("XDNA");
-        case mXDNA:
+        case NSCOIN:
+            return QString("NSCOIN");
+        case mNSCOIN:
             return QString("mDNA");
-        case uXDNA:
-            return QString::fromUtf8("μXDNA");
+        case uNSCOIN:
+            return QString::fromUtf8("μNSCOIN");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case XDNA:
-            return QString("tXDNA");
-        case mXDNA:
+        case NSCOIN:
+            return QString("tNSCOIN");
+        case mNSCOIN:
             return QString("mXtDNA");
-        case uXDNA:
-            return QString::fromUtf8("μtXDNA");
+        case uNSCOIN:
+            return QString::fromUtf8("μtNSCOIN");
         default:
             return QString("???");
         }
@@ -83,23 +83,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case XDNA:
-            return QString("XDNA");
-        case mXDNA:
-            return QString("Milli-XDNA (1 / 1" THIN_SP_UTF8 "000)");
-        case uXDNA:
-            return QString("Micro-XDNA (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case NSCOIN:
+            return QString("NSCOIN");
+        case mNSCOIN:
+            return QString("Milli-NSCOIN (1 / 1" THIN_SP_UTF8 "000)");
+        case uNSCOIN:
+            return QString("Micro-NSCOIN (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case XDNA:
-            return QString("TestXDNAs");
-        case mXDNA:
-            return QString("Milli-TestXDNAs (1 / 1" THIN_SP_UTF8 "000)");
-        case uXDNA:
-            return QString("Micro-TestXDNAs (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case NSCOIN:
+            return QString("TestNSCOINs");
+        case mNSCOIN:
+            return QString("Milli-TestNSCOINs (1 / 1" THIN_SP_UTF8 "000)");
+        case uNSCOIN:
+            return QString("Micro-TestNSCOINs (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -109,11 +109,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case XDNA:
+    case NSCOIN:
         return 100000000;
-    case mXDNA:
+    case mNSCOIN:
         return 100000;
-    case uXDNA:
+    case uNSCOIN:
         return 100;
     default:
         return 100000000;
@@ -123,11 +123,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case XDNA:
+    case NSCOIN:
         return 8;
-    case mXDNA:
+    case mNSCOIN:
         return 5;
-    case uXDNA:
+    case uNSCOIN:
         return 2;
     default:
         return 0;

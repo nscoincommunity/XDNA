@@ -1,19 +1,19 @@
 [Unit]
-Description=XDNA's distributed currency daemon
+Description=NSCOIN's distributed currency daemon
 After=network.target
 
 [Service]
-User=xdna
-Group=xdna
+User=nscoin
+Group=nscoin
 
 Type=forking
-PIDFile=/var/lib/xdnad/xdnad.pid
+PIDFile=/var/lib/nscoind/nscoind.pid
 
-ExecStart=/usr/bin/xdnad -daemon -pid=/var/lib/xdnad/xdnad.pid \
-          -conf=/etc/xdna/xdna.conf -datadir=/var/lib/xdnad
+ExecStart=/usr/bin/nscoind -daemon -pid=/var/lib/nscoind/nscoind.pid \
+          -conf=/etc/nscoin/nscoin.conf -datadir=/var/lib/nscoind
 
-ExecStop=-/usr/bin/xdna-cli -conf=/etc/xdna/xdna.conf \
-         -datadir=/var/lib/xdnad stop
+ExecStop=-/usr/bin/nscoin-cli -conf=/etc/nscoin/nscoin.conf \
+         -datadir=/var/lib/nscoind stop
 
 Restart=always
 PrivateTmp=true
